@@ -3,6 +3,16 @@ entries:
   rocketadmin:
   - apiVersion: v2
     appVersion: 0.14.8
+    created: "2024-06-15T13:06:46.466060343Z"
+    description: Rocketadmin helm chart
+    digest: 6f35d73f2d99c7d69e38759079716a4c867d03ac2611e4ab377084beba806b07
+    name: rocketadmin
+    type: application
+    urls:
+    - https://github.com/rocket-admin/helm-chart/releases/download/rocketadmin-0.1.4/rocketadmin-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 0.14.8
     created: "2024-06-14T16:33:34.198451206Z"
     description: Rocketadmin helm chart
     digest: 110f15c78731a9da388d9977e1f69a1ea899de5d860cda35743100815f3f016d
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://github.com/rocket-admin/helm-chart/releases/download/rocketadmin-0.1.2/rocketadmin-0.1.2.tgz
     version: 0.1.2
-generated: "2024-06-14T16:33:34.198462918Z"
+generated: "2024-06-15T13:06:46.466100539Z"
