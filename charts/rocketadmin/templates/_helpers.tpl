@@ -60,3 +60,17 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Generate a random alphanumeric string of 16 characters
+*/}}
+{{- define "rocketadmin.dbPassword" -}}
+{{- .Values.randomString | default (randAlphaNum 16 | quote) -}}
+{{- end -}}
+
+{{/*
+Create a default fully qualified postgresql name.
+*/}}
+{{- define "rocketadmin.postgresql.fullname" -}}
+{{- printf "%s-%s" .Release.Name "postgresql" | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
