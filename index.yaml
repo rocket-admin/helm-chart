@@ -3,6 +3,21 @@ entries:
   rocketadmin:
   - apiVersion: v2
     appVersion: 0.14.8
+    created: "2024-06-16T13:33:03.073681784Z"
+    dependencies:
+    - name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 15.5.5
+    description: Rocketadmin helm chart
+    digest: a4263027470614625a714d3cd9dad8901512bb8ac96847a4a8b619bb8eb5c385
+    home: https://rocketadmin.com
+    name: rocketadmin
+    type: application
+    urls:
+    - https://github.com/rocket-admin/helm-chart/releases/download/rocketadmin-0.1.9/rocketadmin-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 0.14.8
     created: "2024-06-16T13:23:43.624898457Z"
     dependencies:
     - name: postgresql
@@ -71,4 +86,4 @@ entries:
     urls:
     - https://github.com/rocket-admin/helm-chart/releases/download/rocketadmin-0.1.2/rocketadmin-0.1.2.tgz
     version: 0.1.2
-generated: "2024-06-16T13:23:43.624918185Z"
+generated: "2024-06-16T13:33:03.073712882Z"
