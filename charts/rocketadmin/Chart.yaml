@@ -28,6 +28,6 @@ dependencies:
   repository: oci://registry-1.docker.io/bitnamicharts
   version: "15.5.5"
 maintainers:
-  - name: Andrii Kostenko
+  - name: gugu
     email: andrii@rocketadmin.com
     url: https://rocketadmin.com
