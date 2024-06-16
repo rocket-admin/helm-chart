@@ -80,3 +80,9 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+postgresql:
+  enabled: true
+  auth:
+    username: rocketadmin
+    existingSecret: rocketadmin-postgresql
