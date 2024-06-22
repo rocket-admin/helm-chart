@@ -13,6 +13,8 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+auth:
+  password: changeme
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -86,3 +88,4 @@ postgresql:
   auth:
     username: rocketadmin
     existingSecret: rocketadmin-postgresql-secret
+    database: rocketadmin
