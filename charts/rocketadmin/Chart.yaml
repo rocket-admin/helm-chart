@@ -3,10 +3,7 @@ name: rocketadmin
 description: Rocketadmin is a web-based application for creating admin panels for your projects.
 type: application
 
-# This is the chart version. This version number should be incremented each time you make changes
-# to the chart and its templates, including the app version.
-# Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.11
+version: 0.1.12
 home: https://rocketadmin.com
 sources:
   - https://github.com/rocket-admin/rocketadmin
