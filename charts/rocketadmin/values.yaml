@@ -85,4 +85,4 @@ postgresql:
   enabled: true
   auth:
     username: rocketadmin
-    existingSecret: rocketadmin-postgresql
+    existingSecret: rocketadmin-postgresql-secret
