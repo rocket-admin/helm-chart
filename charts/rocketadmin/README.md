@@ -1,4 +1,5 @@
 # RocketAdmin Helm Chart
+
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/rocketadmin)](https://artifacthub.io/packages/search?repo=rocketadmin)
 
 ## Overview
@@ -15,6 +16,7 @@ This Helm chart is used to deploy RocketAdmin, a comprehensive administration to
 To install the chart with the release name `my-release`:
 
 ```bash
+helm repo add rocketadmin https://charts.rocketadmin.com
 helm install rocketadmin ./rocketadmin
 ```
 
@@ -36,6 +38,13 @@ The following table lists the configurable parameters of the RocketAdmin chart a
 
 | Parameter                          | Description                                                  | Default                       |
 | ---------------------------------- | ------------------------------------------------------------ | ----------------------------- |
+| `auth.password`                    | Password used between rocketadmin and internal postgres db   | `"changeme"`                  |
+| `email.enabled`                    | Enable email notifications                                   | `false`                       |
+| `email.host`                       | SMTP server hostname                                         | `""`                          |
+| `email.port`                       | SMTP server port                                             | `587`                         |
+| `email.username`                   | SMTP server username                                         | `""`                          |
+| `email.password`                   | SMTP server password                                         | `""`                          |
+| `email.from`                       | Email address to send from                                   | `""`                          |
 | `replicaCount`                     | Number of RocketAdmin pods to deploy                         | `1`                           |
 | `image.repository`                 | RocketAdmin image repository                                 | `rocketadmin/rocketadmin`     |
 | `image.tag`                        | RocketAdmin image tag                                        | `latest`                      |
@@ -50,8 +59,6 @@ The following table lists the configurable parameters of the RocketAdmin chart a
 | `nodeSelector`                     | Node labels for pod assignment                               | `{}`                          |
 | `tolerations`                      | Tolerations for pod assignment                               | `[]`                          |
 | `affinity`                         | Map of node/pod affinities                                   | `{}`                          |
-| `config.database_url`              | Database connection URL for RocketAdmin                      | `""`                          |
-| `config.other_configurations`      | Other configurations for RocketAdmin                         | `{}`                          |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:
 
