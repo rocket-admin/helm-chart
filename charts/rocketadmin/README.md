@@ -44,7 +44,7 @@ The following table lists the configurable parameters of the RocketAdmin chart a
 | `email.port`                       | SMTP server port                                             | `587`                         |
 | `email.username`                   | SMTP server username                                         | `""`                          |
 | `email.password`                   | SMTP server password                                         | `""`                          |
-| `email.from`                       | Email address to send from                                   | `""`                          |
+| `email.from`                       | Email address to send from                                   | `"rocketadmin@email.local"`   |
 | `replicaCount`                     | Number of RocketAdmin pods to deploy                         | `1`                           |
 | `image.repository`                 | RocketAdmin image repository                                 | `rocketadmin/rocketadmin`     |
 | `image.tag`                        | RocketAdmin image tag                                        | `latest`                      |
