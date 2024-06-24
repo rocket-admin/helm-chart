@@ -1,0 +1,8 @@
+auth:
+  password: "password"
+email:
+  enabled: true
+  host: smtp.example.com
+  password: "password"
+  port: 587
+  username: user
