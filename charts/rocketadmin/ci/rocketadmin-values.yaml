@@ -12,3 +12,5 @@ ingress:
   hosts:
     - host: rocketadmin.local
       paths:
+      - path: /
+        pathType: ImplementationSpecific
