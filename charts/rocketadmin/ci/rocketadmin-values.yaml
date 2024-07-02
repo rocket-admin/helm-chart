@@ -1,9 +1,14 @@
 auth:
   password: "password"
+hostname: rocketadmin.local
 email:
   enabled: true
   host: smtp.example.com
   password: "password"
   port: 587
   username: user
-hostname: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ .Values.ingress.hosts | first }}{{ else }}''{{ end }}"
+ingress:
+  enabled: true
+  hosts:
+    - host: rocketadmin.local
+      paths:
