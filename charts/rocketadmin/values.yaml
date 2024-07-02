@@ -13,7 +13,8 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
+# default from ingress.hosts[0].host
+hostname: ""
 auth:
   password: changeme
 email:

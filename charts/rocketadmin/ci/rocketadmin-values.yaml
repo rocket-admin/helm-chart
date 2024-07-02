@@ -1,8 +1,16 @@
 auth:
   password: "password"
+hostname: rocketadmin.local
 email:
   enabled: true
   host: smtp.example.com
   password: "password"
   port: 587
   username: user
+ingress:
+  enabled: true
+  hosts:
+    - host: rocketadmin.local
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
