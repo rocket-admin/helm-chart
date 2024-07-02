@@ -6,3 +6,4 @@ email:
   password: "password"
   port: 587
   username: user
+hostname: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ .Values.ingress.hosts | first }}{{ else }}''{{ end }}"
