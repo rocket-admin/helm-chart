@@ -3,6 +3,29 @@ entries:
   rocketadmin:
   - apiVersion: v2
     appVersion: 0.14.8
+    created: "2024-07-02T21:18:30.914020671Z"
+    dependencies:
+    - name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 15.5.5
+    description: Rocketadmin is a web-based application for creating admin panels
+      for your projects.
+    digest: c8769667945ca42aad2d53c8bea4de9903d245a90b8dffb0f8e26fe4419fcd0f
+    home: https://rocketadmin.com
+    icon: https://avatars.githubusercontent.com/u/84132223
+    maintainers:
+    - email: andrii@rocketadmin.com
+      name: gugu
+      url: https://rocketadmin.com
+    name: rocketadmin
+    sources:
+    - https://github.com/rocket-admin/rocketadmin
+    type: application
+    urls:
+    - https://github.com/rocket-admin/helm-chart/releases/download/rocketadmin-0.1.17/rocketadmin-0.1.17.tgz
+    version: 0.1.17
+  - apiVersion: v2
+    appVersion: 0.14.8
     created: "2024-06-24T16:52:35.024808743Z"
     dependencies:
     - name: postgresql
@@ -243,4 +266,4 @@ entries:
     urls:
     - https://github.com/rocket-admin/helm-chart/releases/download/rocketadmin-0.1.2/rocketadmin-0.1.2.tgz
     version: 0.1.2
-generated: "2024-06-24T16:52:35.024916024Z"
+generated: "2024-07-02T21:18:30.915000902Z"
