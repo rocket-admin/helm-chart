@@ -27,10 +27,6 @@ spec:
       serviceAccountName: {{ include "rocketadmin.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      initContainers:
-        - name: wait-for-master-before-starup
-          image: busybox
-          command:  ["sh", "-c", "until nc -z {{ include "rocketadmin.postgresql.fullname" . }} 5432 > /dev/null; do echo Waiting for postgres.; sleep 2; done;"]
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
