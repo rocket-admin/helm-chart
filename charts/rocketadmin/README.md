@@ -50,7 +50,7 @@ The following table lists the configurable parameters of the RocketAdmin chart a
 | `image.tag`                        | RocketAdmin image tag                                        | `latest`                      |
 | `image.pullPolicy`                 | Image pull policy                                            | `IfNotPresent`                |
 | `service.type`                     | Kubernetes service type                                      | `ClusterIP`                   |
-| `service.port`                     | Service port for RocketAdmin                                 | `80`                          |
+| `service.port`                     | Service port for RocketAdmin                                 | `8080`                        |
 | `ingress.enabled`                  | Enable ingress controller resource                           | `false`                       |
 | `ingress.annotations`              | Ingress annotations                                          | `{}`                          |
 | `ingress.hosts`                    | Hostnames for the ingress resource                           | `[rocketadmin.local]`         |
