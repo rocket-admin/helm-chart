@@ -45,6 +45,7 @@ The following table lists the configurable parameters of the RocketAdmin chart a
 | `email.username`                   | SMTP server username                                         | `""`                          |
 | `email.password`                   | SMTP server password                                         | `""`                          |
 | `email.from`                       | Email address to send from                                   | `""`                          |
+| `config.openai_api_key`            | OpenAI API Key (optional)                                    | `""`                          |
 | `replicaCount`                     | Number of RocketAdmin pods to deploy                         | `1`                           |
 | `image.repository`                 | RocketAdmin image repository                                 | `rocketadmin/rocketadmin`     |
 | `image.tag`                        | RocketAdmin image tag                                        | `latest`                      |
