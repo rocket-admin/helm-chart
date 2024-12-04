@@ -24,6 +24,8 @@ email:
   host: ""
   port: ""
   from: "rocketadmin@email.local"
+config:
+  openai_api_key: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
