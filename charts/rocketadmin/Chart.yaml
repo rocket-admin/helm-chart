@@ -3,11 +3,11 @@ name: rocketadmin
 description: Rocketadmin is a web-based application for creating admin panels for your projects.
 type: application
 icon: https://avatars.githubusercontent.com/u/84132223
-version: 0.1.37
+version: 0.1.38
 home: https://rocketadmin.com
 sources:
   - https://github.com/rocket-admin/rocketadmin
-appVersion: "0.28.5"
+appVersion: "0.29.7"
 dependencies:
 - name: postgresql
   repository: oci://registry-1.docker.io/bitnamicharts
