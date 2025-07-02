@@ -7,7 +7,7 @@ version: 0.1.43
 home: https://rocketadmin.com
 sources:
   - https://github.com/rocket-admin/rocketadmin
-appVersion: "0.33.14"
+appVersion: "0.35.0"
 dependencies:
 - name: postgresql
   repository: oci://registry-1.docker.io/bitnamicharts
