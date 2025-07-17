@@ -1,0 +1,85 @@
+name: Update Chart Version
+
+on:
+  schedule:
+    - cron: '0 9 * * *' # Daily at 9 AM UTC
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-chart-version:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Get latest RocketAdmin release
+      id: get-release
+      run: |
+        LATEST_RELEASE=$(curl -s https://api.github.com/repos/rocket-admin/rocketadmin/releases/latest | jq -r '.tag_name')
+        echo "latest_release=${LATEST_RELEASE}" >> $GITHUB_OUTPUT
+        echo "Latest RocketAdmin release: ${LATEST_RELEASE}"
+        
+    - name: Get current chart appVersion
+      id: get-current
+      run: |
+        CURRENT_VERSION=$(grep '^appVersion:' charts/rocketadmin/Chart.yaml | sed 's/appVersion: "//' | sed 's/"//')
+        echo "current_version=${CURRENT_VERSION}" >> $GITHUB_OUTPUT
+        echo "Current chart appVersion: ${CURRENT_VERSION}"
+        
+    - name: Compare versions
+      id: compare
+      run: |
+        LATEST="${{ steps.get-release.outputs.latest_release }}"
+        CURRENT="${{ steps.get-current.outputs.current_version }}"
+        
+        # Remove 'v' prefix from latest release if present
+        LATEST_CLEAN=${LATEST#v}
+        
+        if [ "$LATEST_CLEAN" != "$CURRENT" ]; then
+          echo "needs_update=true" >> $GITHUB_OUTPUT
+          echo "New version available: $LATEST_CLEAN (current: $CURRENT)"
+        else
+          echo "needs_update=false" >> $GITHUB_OUTPUT
+          echo "Chart is up to date"
+        fi
+        
+    - name: Update Chart.yaml
+      if: steps.compare.outputs.needs_update == 'true'
+      run: |
+        LATEST_CLEAN=${{ steps.get-release.outputs.latest_release }}
+        LATEST_CLEAN=${LATEST_CLEAN#v}
+        
+        # Update appVersion
+        sed -i "s/^appVersion: .*/appVersion: \"${LATEST_CLEAN}\"/" charts/rocketadmin/Chart.yaml
+        
+        # Increment chart version (patch version)
+        CURRENT_CHART_VERSION=$(grep '^version:' charts/rocketadmin/Chart.yaml | sed 's/version: //')
+        NEW_CHART_VERSION=$(echo "$CURRENT_CHART_VERSION" | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')
+        sed -i "s/^version: .*/version: ${NEW_CHART_VERSION}/" charts/rocketadmin/Chart.yaml
+        
+        echo "Updated appVersion to: ${LATEST_CLEAN}"
+        echo "Updated chart version to: ${NEW_CHART_VERSION}"
+        
+    - name: Create Pull Request
+      if: steps.compare.outputs.needs_update == 'true'
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "Update RocketAdmin to ${{ steps.get-release.outputs.latest_release }}"
+        title: "Update RocketAdmin to ${{ steps.get-release.outputs.latest_release }}"
+        body: |
+          This PR updates the RocketAdmin Helm chart to use the latest release.
+          
+          **Changes:**
+          - Updated appVersion from ${{ steps.get-current.outputs.current_version }} to ${{ steps.get-release.outputs.latest_release }}
+          - Incremented chart version
+          
+          **Release Notes:**
+          See: https://github.com/rocket-admin/rocketadmin/releases/tag/${{ steps.get-release.outputs.latest_release }}
+          
+          🤖 This PR was created automatically by the update-chart-version workflow.
+        branch: update-rocketadmin-${{ steps.get-release.outputs.latest_release }}
+        delete-branch: true
