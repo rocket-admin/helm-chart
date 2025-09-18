@@ -96,6 +96,8 @@ affinity: {}
 
 postgresql:
   enabled: true
+  image:
+    repository: bitnamilegacy/postgresql
   auth:
     username: rocketadmin
     existingSecret: rocketadmin-postgresql-secret
