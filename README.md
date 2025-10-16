@@ -4,7 +4,7 @@
 
 ## UPGRADE NOTICE
 
-Starting with version 1 default behaviour changes to pglite. If you need to keep previous behaviour you need to 
+Starting with version 1 default storage changes to pglite. If you need to keep previous behaviour you need to set postgresql.enabled = true
 
 ## Overview
 
