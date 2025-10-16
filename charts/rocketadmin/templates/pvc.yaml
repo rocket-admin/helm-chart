@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: rocketadmin-data
+    namespace: default
+    labels:
+      {{- include "rocketadmin.labels" . | nindent 4 }}
+spec:
+    accessModes:
+        - ReadWriteOnce
+    storageClassName: {{ .Values.pglite.storageClass }}
+    resources:
+        requests:
+            storage: 10Gi
