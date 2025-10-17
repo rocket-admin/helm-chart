@@ -49,7 +49,7 @@ spec:
 {{- if .Values.pglite.enabled }}
           volumeMounts:
               - name: rocketadmin-data
-                mountPath: /var/lib/rocketadmin
+                mountPath: /app/backend/pglite-storage
 {{- end }}
           livenessProbe:
             httpGet:
