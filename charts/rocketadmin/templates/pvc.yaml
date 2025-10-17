@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-    name: rocketadmin-data
+    name: rocketadmin-data-pvc
     namespace: default
     labels:
       {{- include "rocketadmin.labels" . | nindent 4 }}
