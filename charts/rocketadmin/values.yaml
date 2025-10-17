@@ -105,4 +105,4 @@ postgresql:
 
 pglite:
   enabled: true
-  storageClass: default
+  storageClass:
