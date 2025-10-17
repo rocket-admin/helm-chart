@@ -1,3 +1,4 @@
+{{- if .Values.pglite.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -12,3 +13,4 @@ spec:
     resources:
         requests:
             storage: 10Gi
+{{- endif }}
