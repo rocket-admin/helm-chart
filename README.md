@@ -2,6 +2,10 @@
 
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/rocketadmin)](https://artifacthub.io/packages/search?repo=rocketadmin)
 
+## UPGRADE NOTICE
+
+Starting with version 1 default storage changes to pglite. If you need to keep previous behaviour you need to set postgresql.enabled = true
+
 ## Overview
 
 This Helm chart is used to deploy RocketAdmin, a comprehensive administration tool for managing databases, on a Kubernetes cluster. This chart configures and manages the necessary Kubernetes resources such as Deployments, Services, and ConfigMaps.
@@ -34,7 +38,7 @@ The command removes all the Kubernetes components associated with the chart and 
 
 ## Configuration
 
-The following table lists the configurable parameters of the RocketAdmin chart and their default values.
+The following table lists the configurable parameters of the RocketAdmin chart and their default values. If you want to keep existing behaviour - set postgresql.enabled to true
 
 | Parameter                          | Description                                                  | Default                       |
 | ---------------------------------- | ------------------------------------------------------------ | ----------------------------- |

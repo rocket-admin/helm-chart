@@ -95,10 +95,14 @@ tolerations: []
 affinity: {}
 
 postgresql:
-  enabled: true
+  enabled: false
   image:
     repository: bitnamilegacy/postgresql
   auth:
     username: rocketadmin
     existingSecret: rocketadmin-postgresql-secret
     database: rocketadmin
+
+pglite:
+  enabled: true
+  storageClass:

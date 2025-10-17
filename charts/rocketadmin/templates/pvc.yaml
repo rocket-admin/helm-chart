@@ -1,0 +1,15 @@
+{{- if .Values.pglite.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: rocketadmin-data-pvc
+    labels:
+      {{- include "rocketadmin.labels" . | nindent 4 }}
+spec:
+    accessModes:
+        - ReadWriteOnce
+    storageClassName: {{ .Values.pglite.storageClass }}
+    resources:
+        requests:
+            storage: 10Gi
+{{- end }}
