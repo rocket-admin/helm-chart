@@ -12,6 +12,7 @@ dependencies:
 - name: postgresql
   repository: oci://registry-1.docker.io/bitnamicharts
   version: "15.5.20"
+  condition: "postgresql.enabled"
 maintainers:
   - name: gugu
     email: andrii@rocketadmin.com
