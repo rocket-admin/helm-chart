@@ -32,7 +32,7 @@ spec:
           - name: rocketadmin-data
             persistentVolumeClaim:
                 claimName: rocketadmin-data-pvc
-{{- endif }}
+{{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
