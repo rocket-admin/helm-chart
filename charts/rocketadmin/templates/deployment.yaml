@@ -50,7 +50,7 @@ spec:
           volumeMounts:
               - name: rocketadmin-data
                 mountPath: /var/lib/rocketadmin
-{{- endif }}
+{{- end }}
           livenessProbe:
             httpGet:
               path: /
