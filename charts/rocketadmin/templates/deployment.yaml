@@ -26,7 +26,6 @@ spec:
       {{- end }}
       serviceAccountName: {{ include "rocketadmin.serviceAccountName" . }}
       securityContext:
-        fsGroup: 999
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
 {{- if .Values.pglite.enabled }}
       strategy:
