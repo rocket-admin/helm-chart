@@ -29,10 +29,16 @@ spec:
         fsGroup: 999
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
 {{- if .Values.pglite.enabled }}
+      strategy:
+        type: Recreate
       volumes:
           - name: rocketadmin-data
             persistentVolumeClaim:
                 claimName: rocketadmin-data-pvc
+          - name: tmp
+            emptyDir:
+              medium: Memory
+              sizeLimit: 64Mi
 {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -51,6 +57,9 @@ spec:
           volumeMounts:
               - name: rocketadmin-data
                 mountPath: /app/backend/pglite-storage
+              - mountPath: /tmp
+                name: tmp
+                subPath: tmp
 {{- end }}
           livenessProbe:
             httpGet:
