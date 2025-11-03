@@ -55,7 +55,7 @@ spec:
 {{- if .Values.pglite.enabled }}
           volumeMounts:
               - name: rocketadmin-data
-                mountPath: /app/backend/pglite-storage
+                mountPath: /app/backend/pglite-storage/data
               - mountPath: /tmp
                 name: tmp
                 subPath: tmp
