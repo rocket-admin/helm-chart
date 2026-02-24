@@ -39,15 +39,18 @@ serviceAccount:
 podAnnotations: {}
 
 podSecurityContext:
+  runAsNonRoot: true
   fsGroup: 999
+  seccompProfile:
+    type: RuntimeDefault
 
-securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  capabilities:
+    drop:
+      - ALL
 
 service:
   type: ClusterIP

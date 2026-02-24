@@ -8,6 +8,10 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
+  {{- if .Values.pglite.enabled }}
+  strategy:
+    type: Recreate
+  {{- end }}
   selector:
     matchLabels:
       {{- include "rocketadmin.selectorLabels" . | nindent 6 }}
@@ -27,17 +31,23 @@ spec:
       serviceAccountName: {{ include "rocketadmin.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-{{- if .Values.pglite.enabled }}
-      strategy:
-        type: Recreate
       volumes:
-          - name: rocketadmin-data
-            persistentVolumeClaim:
-                claimName: rocketadmin-data-pvc
-          - name: tmp
-            emptyDir:
-              medium: Memory
-              sizeLimit: 64Mi
+        - name: tmp
+          emptyDir:
+            medium: Memory
+            sizeLimit: 64Mi
+        - name: nginx-cache
+          emptyDir: {}
+        - name: nginx-log
+          emptyDir: {}
+        - name: nginx-run
+          emptyDir: {}
+        - name: node-cache
+          emptyDir: {}
+{{- if .Values.pglite.enabled }}
+        - name: rocketadmin-data
+          persistentVolumeClaim:
+            claimName: rocketadmin-data-pvc
 {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -52,13 +62,20 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
-{{- if .Values.pglite.enabled }}
           volumeMounts:
-              - name: rocketadmin-data
-                mountPath: /app/backend/dist/pglite-storage
-              - mountPath: /tmp
-                name: tmp
-                subPath: tmp
+            - name: tmp
+              mountPath: /tmp
+            - name: nginx-cache
+              mountPath: /var/lib/nginx
+            - name: nginx-log
+              mountPath: /var/log/nginx
+            - name: nginx-run
+              mountPath: /run
+            - name: node-cache
+              mountPath: /app/backend/node_modules/.cache
+{{- if .Values.pglite.enabled }}
+            - name: rocketadmin-data
+              mountPath: /app/backend/dist/pglite-storage
 {{- end }}
           livenessProbe:
             httpGet:
