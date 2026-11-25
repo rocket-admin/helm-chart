@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
     name: rocketadmin-data-pvc
     labels:
-      {{- include "rocketadmin.labels" . | nindent 4 }}
+      {{- include "rocketadmin.labels" . | nindent 6 }}
 spec:
     accessModes:
         - ReadWriteOnce
